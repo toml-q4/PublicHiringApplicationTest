@@ -22,11 +22,11 @@ namespace Q4CsvParser.Domain
             var stringBuilder = new StringBuilder();
 
             if (HeaderRow != null)
-                stringBuilder.AppendLine(HeaderRow.ToString());
+                stringBuilder.AppendLine(HeaderRow.Columns[0].Value.ToString());
 
             foreach (var row in Rows)
             {
-                stringBuilder.AppendLine(row.ToString());
+                stringBuilder.AppendLine(row.Columns[0].Value.ToString());
             }
             return stringBuilder.ToString();
         }
