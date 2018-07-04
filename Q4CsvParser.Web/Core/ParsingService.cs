@@ -68,6 +68,8 @@ namespace Q4CsvParser.Web.Core
             bool escapedPrior = false;
             bool escaped = false;
 
+            line = line.Trim();
+
             var row = new CsvRow();
             var sb = new StringBuilder();
             for (int i = 0; i < line.Length; i++)
