@@ -11,5 +11,12 @@ namespace Q4CsvParser.Contracts
         /// <param name="containsHeader"></param>
         /// <returns></returns>
         CsvTable ParseCsv(string fileContent, bool containsHeader);
+
+        /// <summary>
+        /// Accepts a single-line string with the contents of the CSV row.
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        CsvRow ParseRow(string row);
     }
 }

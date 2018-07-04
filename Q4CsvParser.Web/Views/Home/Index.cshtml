@@ -5,8 +5,6 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("~/Views/Home/_TaskDescription.cshtml")
-
 @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
