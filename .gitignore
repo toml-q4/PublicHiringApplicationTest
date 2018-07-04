@@ -281,3 +281,6 @@ __pycache__/
 # Assembly file from q4web-Setup
 Assembly
 Q4Setup.Web/Web.config
+
+# Uploaded files
+App_Data/

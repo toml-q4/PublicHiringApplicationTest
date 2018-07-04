@@ -7,5 +7,31 @@
 
 <h2>Data from <strong>@Model.OriginalFileName</strong></h2>
 
-@* TODO Fill in the logic to create a view here *@
+<table class="table table-hover">
 
+    @if (Model.CsvTable.HeaderRow != null)
+    {
+        <thead>
+            <tr>
+                @foreach (var column in Model.CsvTable.HeaderRow.Columns)
+                {
+                    <th scope="col">@column</th>
+                }
+            </tr>
+        </thead>
+    }
+
+    
+    <tbody>
+        @foreach (var row in Model.CsvTable.Rows)
+        {
+            <tr>
+                @foreach (var column in row.Columns)
+                {
+                    <td>@column</td>
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>

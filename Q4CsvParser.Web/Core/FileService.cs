@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Web;
 using Q4CsvParser.Contracts;
 
@@ -21,8 +22,25 @@ namespace Q4CsvParser.Web.Core
         /// <returns>The file path in the appData folder the file was saved to</returns>
         public string StoreFile(HttpPostedFileBase file)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            // TODO: Should probably not use HttpContex.Current
+            var filePath = Path.Combine(HttpContext.Current.Server.MapPath(UploadFilePath), file.FileName);
+
+            try
+            {
+                var fi = new FileInfo(filePath);
+            }
+            catch
+            {
+                return null;
+            }
+
+            // Overwrite existing files of the same name.
+            using (var fs = File.Open(filePath, FileMode.Create))
+            {
+                file.InputStream.CopyTo(fs);
+            }
+
+            return filePath;
         }
 
         /// <summary>
@@ -33,8 +51,7 @@ namespace Q4CsvParser.Web.Core
         /// <returns>The contents of the file in a string</returns>
         public string ReadFile(string filePath)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            return File.ReadAllText(filePath);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Q4CsvParser.Contracts;
 
 namespace Q4CsvParser.Web.Core
@@ -15,8 +16,7 @@ namespace Q4CsvParser.Web.Core
         /// <returns></returns>
         public bool IsCsvFile(string filename)
         {
-            //TODO fill in your logic here
-            throw new NotImplementedException();
+            return filename != null ? String.Equals(Path.GetExtension(filename), ".csv", StringComparison.OrdinalIgnoreCase) : false;
         }
     }
 }
