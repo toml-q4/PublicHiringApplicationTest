@@ -7,26 +7,31 @@
 
 <h2>Data from <strong>@Model.OriginalFileName</strong></h2>
 
-<table class="csvData">
+<table class="table">
 
     @if (Model.CsvTable.HeaderRow != null)
     {
-        <tr>
-            @foreach (var column in Model.CsvTable.HeaderRow.Columns)
-            {
-                <th>@column</th>
-            }
-        </tr>
+        <thead>
+            <tr>
+                @foreach (var column in Model.CsvTable.HeaderRow.Columns)
+                {
+                    <th scope="col">@column</th>
+                }
+            </tr>
+        </thead>
     }
 
-    @foreach (var row in Model.CsvTable.Rows)
-    {
-        <tr>
-            @foreach (var column in row.Columns)
-            {
-                <td>@column</td>
-            }
-        </tr>
-    }
+    
+    <tbody>
+        @foreach (var row in Model.CsvTable.Rows)
+        {
+            <tr>
+                @foreach (var column in row.Columns)
+                {
+                    <td>@column</td>
+                }
+            </tr>
+        }
+    </tbody>
 
 </table>
